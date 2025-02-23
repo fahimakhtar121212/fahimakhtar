@@ -1,0 +1,833 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Portfolio of Fahim Akhtar, Senior Full Stack .NET Developer specializing in ASP.NET Core, C#, JavaScript, Azure Cloud, and CI/CD pipelines.">
+    <meta name="keywords" content="Fahim Akhtar, software engineer, full stack developer, .NET Core, ASP.NET, C#, JavaScript, Azure, Karachi, Pakistan">
+    <meta name="author" content="Fahim Akhtar">
+    <title>Fahim Akhtar | Senior Full Stack .NET Developer</title>
+    <!-- Font Awesome for Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+
+        body {
+            line-height: 1.6;
+            color: #e0e0e0;
+            background: #1a1f2b;
+            overflow-x: hidden;
+            transition: all 0.3s ease;
+        }
+
+        body.light {
+            background: #f5f5f5;
+            color: #333;
+        }
+
+        /* Theme Toggle Button (Icons) */
+        .theme-toggle {
+            position: fixed;
+            top: 20px;
+            right: 20px;
+            padding: 0.5rem;
+            background: #4a90e2;
+            color: #ffffff;
+            border: none;
+            border-radius: 50%;
+            cursor: pointer;
+            font-size: 1.5rem;
+            width: 40px;
+            height: 40px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            box-shadow: 0 4px 12px rgba(74, 144, 226, 0.3);
+            transition: background 0.3s ease, transform 0.3s ease;
+            z-index: 1000;
+        }
+
+        .theme-toggle:hover {
+            background: #357abd;
+            transform: scale(1.1);
+            box-shadow: 0 6px 15px rgba(53, 122, 189, 0.4);
+        }
+
+        .theme-toggle .fa-sun {
+            display: block;
+        }
+
+        .theme-toggle .fa-moon {
+            display: none;
+        }
+
+        body.light .theme-toggle .fa-sun {
+            display: none;
+        }
+
+        body.light .theme-toggle .fa-moon {
+            display: block;
+        }
+
+        /* Navbar and Sidebar */
+        .navbar {
+            display: flex;
+            justify-content: flex-end;
+            align-items: center;
+            padding: 1rem 1rem;
+            background: #2a3b4d;
+            color: #ffffff;
+            position: fixed;
+            width: 100%;
+            top: 0;
+            z-index: 100;
+            box-shadow: 0 2px 15px rgba(0, 0, 0, 0.3);
+        }
+
+        body.light .navbar {
+            background: #ffffff;
+            color: #333;
+            box-shadow: 0 2px 15px rgba(0, 0, 0, 0.1);
+        }
+
+        .logo {
+            font-size: 1.2rem;
+            font-weight: 600;
+            animation: pulse 2s infinite ease-in-out;
+        }
+
+        @media (min-width: 768px) {
+            .logo { font-size: 1.5rem; }
+            .navbar { padding: 1rem 2rem; justify-content: space-between; }
+        }
+
+        @keyframes pulse {
+            0% { transform: scale(1); }
+            50% { transform: scale(1.05); }
+            100% { transform: scale(1); }
+        }
+
+        .nav-links {
+            list-style: none;
+            display: flex;
+            gap: 1rem;
+            margin-right: 40px;
+        }
+
+        body.light .nav-links a {
+            color: #333;
+        }
+
+        .nav-links a {
+            color: #ffffff;
+            text-decoration: none;
+            font-weight: 500;
+            transition: color 0.3s ease, transform 0.3s ease;
+        }
+
+        .nav-links a:hover {
+            color: #4a90e2;
+            transform: translateY(-2px);
+        }
+
+        .hamburger {
+            display: none;
+            font-size: 1.5rem;
+            cursor: pointer;
+            transition: transform 0.3s ease, color 0.3s ease;
+            color: #ffffff;
+            padding: 0.5rem;
+        }
+
+        body.light .hamburger {
+            color: #333;
+        }
+
+        .hamburger:hover {
+            transform: rotate(90deg) scale(1.1);
+            color: #4a90e2;
+        }
+
+        @media (max-width: 768px) {
+            .hamburger {
+                display: block;
+            }
+
+            .nav-links {
+                display: none;
+                flex-direction: column;
+                position: fixed;
+                top: 0;
+                left: -250px;
+                width: 250px;
+                height: 100vh;
+                background: #2a3b4d;
+                padding: 4rem 1rem 1rem;
+                box-shadow: 2px 0 15px rgba(0, 0, 0, 0.3);
+                transition: left 0.3s ease;
+            }
+
+            body.light .nav-links {
+                background: #ffffff;
+                box-shadow: 2px 0 15px rgba(0, 0, 0, 0.1);
+            }
+
+            .nav-links.active {
+                left: 0;
+            }
+
+            .nav-links li {
+                margin-bottom: 1rem;
+            }
+
+            .nav-links a {
+                font-size: 1.1rem;
+                padding: 0.5rem;
+            }
+        }
+
+        /* Hero Section */
+        .hero {
+            height: 100vh;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            padding: 1rem;
+            background: #1a1f2b url('coding-background.jpg') no-repeat center center/cover;
+            color: #ffffff;
+            position: relative;
+            overflow: hidden;
+            text-align: center;
+        }
+
+        body.light .hero {
+            background: #f5f5f5 url('coding-background-light.jpg') no-repeat center center/cover;
+            color: #333;
+        }
+
+        .hero::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.3);
+            z-index: 1;
+        }
+
+        body.light .hero::before {
+            background: rgba(0, 0, 0, 0.1);
+        }
+
+        .hero-content {
+            position: relative;
+            z-index: 2;
+            animation: fadeInZoom 2s ease-in;
+        }
+
+        @keyframes fadeInZoom {
+            from { opacity: 0; transform: scale(0.8); }
+            to { opacity: 1; transform: scale(1); }
+        }
+
+        .hero h1 {
+            font-size: 2rem;
+            margin-bottom: 1rem;
+            text-shadow: 2px 2px 8px rgba(0, 0, 0, 0.6);
+            font-weight: 700;
+            animation: bounce 2s infinite ease-in-out;
+        }
+
+        body.light .hero h1 {
+            text-shadow: 2px 2px 8px rgba(0, 0, 0, 0.2);
+            color: #2a3b4d;
+        }
+
+        @media (min-width: 768px) {
+            .hero h1 { font-size: 3.5rem; }
+        }
+
+        @keyframes bounce {
+            0%, 100% { transform: translateY(0); }
+            50% { transform: translateY(-10px); }
+        }
+
+        .hero p {
+            font-size: 1.2rem;
+            margin-bottom: 1rem;
+            color: #b3b3b3;
+            animation: slideInRight 2s ease-in-out;
+        }
+
+        body.light .hero p {
+            color: #666;
+        }
+
+        @media (min-width: 768px) {
+            .hero p { font-size: 1.8rem; }
+        }
+
+        .hero .position {
+            font-size: 1rem;
+            background: rgba(0, 0, 0, 0.7);
+            color: #ffffff;
+            padding: 0.6rem 1.2rem;
+            border-radius: 8px;
+            margin-bottom: 1.5rem;
+            display: inline-block;
+            font-weight: 600;
+            animation: slideInLeft 2s ease-in-out;
+        }
+
+        body.light .hero .position {
+            background: rgba(0, 0, 0, 0.2);
+            color: #333;
+        }
+
+        @media (min-width: 768px) {
+            .hero .position { font-size: 1.2rem; padding: 0.8rem 1.5rem; }
+        }
+
+        .hero img {
+            width: 150px;
+            height: 150px;
+            border-radius: 50%;
+            border: 4px solid #4a90e2;
+            animation: floatRotate 4s ease-in-out infinite;
+            position: relative;
+            box-shadow: 0 6px 15px rgba(0, 0, 0, 0.4);
+            z-index: 3;
+            margin-top: 1rem;
+        }
+
+        body.light .hero img {
+            border-color: #2a3b4d;
+            box-shadow: 0 6px 15px rgba(0, 0, 0, 0.2);
+        }
+
+        @media (min-width: 768px) {
+            .hero img { width: 300px; height: 300px; border-width: 6px; }
+        }
+
+        @keyframes floatRotate {
+            0% { transform: translateY(0) rotate(0deg); }
+            25% { transform: translateY(-20px) rotate(5deg); }
+            50% { transform: translateY(0) rotate(0deg); }
+            75% { transform: translateY(-20px) rotate(-5deg); }
+            100% { transform: translateY(0) rotate(0deg); }
+        }
+
+        @keyframes slideInRight {
+            from { opacity: 0; transform: translateX(100px); }
+            to { opacity: 1; transform: translateX(0); }
+        }
+
+        @keyframes slideInLeft {
+            from { opacity: 0; transform: translateX(-100px); }
+            to { opacity: 1; transform: translateX(0); }
+        }
+
+        .btn {
+            padding: 0.8rem 1.5rem;
+            background: #e74c3c;
+            color: #ffffff;
+            text-decoration: none;
+            border-radius: 8px;
+            transition: background 0.3s, transform 0.3s, box-shadow 0.3s;
+            display: inline-block;
+            font-weight: 600;
+            box-shadow: 0 4px 12px rgba(231, 76, 60, 0.4);
+            animation: pulseBtn 3s infinite ease-in-out;
+        }
+
+        body.light .btn {
+            background: #e74c3c;
+            color: #ffffff;
+            box-shadow: 0 4px 12px rgba(231, 76, 60, 0.2);
+        }
+
+        @media (min-width: 768px) {
+            .btn { padding: 1rem 2rem; }
+        }
+
+        @keyframes pulseBtn {
+            0% { box-shadow: 0 4px 12px rgba(231, 76, 60, 0.4); }
+            50% { box-shadow: 0 6px 16px rgba(231, 76, 60, 0.6); }
+            100% { box-shadow: 0 4px 12px rgba(231, 76, 60, 0.4); }
+        }
+
+        .btn:hover {
+            background: #c0392b;
+            transform: scale(1.1);
+            box-shadow: 0 6px 18px rgba(192, 57, 43, 0.6);
+        }
+
+        /* Sections */
+        .section {
+            padding: 2rem 1rem;
+            text-align: center;
+            background: #2a3b4d;
+            animation: fadeInZoom 1.5s ease-in;
+            position: relative;
+        }
+
+        body.light .section {
+            background: #ffffff;
+            color: #333;
+        }
+
+        @keyframes fadeInZoom {
+            from { opacity: 0; transform: scale(0.8); }
+            to { opacity: 1; transform: scale(1); }
+        }
+
+        .section h2 {
+            font-size: 1.8rem;
+            margin-bottom: 1.5rem;
+            color: #4a90e2;
+            font-weight: 700;
+            position: relative;
+            z-index: 1;
+        }
+
+        body.light .section h2 {
+            color: #2a3b4d;
+        }
+
+        @media (min-width: 768px) {
+            .section { padding: 4rem 2rem; }
+            .section h2 { font-size: 2.8rem; margin-bottom: 2rem; }
+        }
+
+        /* Grids */
+        .experience-grid, .skills-grid, .education-grid, .certifications-grid, .projects-grid, .recommendations-grid {
+            display: grid;
+            gap: 1rem;
+            margin: 0 auto;
+            position: relative;
+            z-index: 1;
+        }
+
+        @media (min-width: 480px) {
+            .experience-grid, .skills-grid, .education-grid, .certifications-grid, .projects-grid, .recommendations-grid {
+                grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            }
+        }
+
+        @media (min-width: 768px) {
+            .experience-grid, .skills-grid, .education-grid, .certifications-grid, .projects-grid, .recommendations-grid {
+                grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+                gap: 2rem;
+                max-width: 1200px;
+            }
+        }
+
+        .experience-card, .education-card, .certification-card, .project-card, .recommendation-card {
+            padding: 1.2rem;
+            background: #3a4d5f;
+            border-radius: 10px;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.4);
+            transition: transform 0.4s ease, box-shadow 0.4s ease, rotate 0.4s ease;
+            animation: slideUp 1s ease-in-out;
+        }
+
+        body.light .experience-card, body.light .education-card, body.light .certification-card, body.light .project-card, body.light .recommendation-card {
+            background: #f0f0f0;
+            color: #333;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+        }
+
+        .experience-card:hover, .education-card:hover, .certification-card:hover, .project-card:hover, .recommendation-card:hover {
+            transform: translateY(-10px) rotate(2deg);
+            box-shadow: 0 8px 25px rgba(0, 0, 0, 0.6);
+        }
+
+        body.light .experience-card:hover, body.light .education-card:hover, body.light .certification-card:hover, body.light .project-card:hover, body.light .recommendation-card:hover {
+            box-shadow: 0 8px 25px rgba(0, 0, 0, 0.2);
+        }
+
+        @keyframes slideUp {
+            from { opacity: 0; transform: translateY(50px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        .skill-card {
+            padding: 1rem;
+            border-radius: 10px;
+            text-align: center;
+            transition: transform 0.4s ease, background 0.4s ease, rotate 0.4s ease;
+            font-weight: 600;
+            color: #ffffff;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
+            animation: bounceIn 1.5s ease-in-out;
+        }
+
+        body.light .skill-card {
+            color: #333;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+        }
+
+        /* Multicolor Skills Cards */
+        .skill-card:nth-child(1) { background: #4a90e2; }
+        .skill-card:nth-child(2) { background: #50c878; }
+        .skill-card:nth-child(3) { background: #ff6f61; }
+        .skill-card:nth-child(4) { background: #9b59b6; }
+        .skill-card:nth-child(5) { background: #f1c40f; }
+        .skill-card:nth-child(6) { background: #e67e22; }
+        .skill-card:nth-child(7) { background: #3498db; }
+        .skill-card:nth-child(8) { background: #2ecc71; }
+        .skill-card:nth-child(9) { background: #e74c3c; }
+        .skill-card:nth-child(10) { background: #8e44ad; }
+        .skill-card:nth-child(11) { background: #d35400; }
+
+        .skill-card:hover {
+            transform: scale(1.1) rotate(-2deg);
+            filter: brightness(115%);
+        }
+
+        body.light .skill-card:hover {
+            filter: brightness(110%);
+        }
+
+        @keyframes bounceIn {
+            0% { opacity: 0; transform: scale(0.8); }
+            50% { transform: scale(1.1); }
+            100% { opacity: 1; transform: scale(1); }
+        }
+
+        /* Contact Form */
+        #contact-form {
+            max-width: 100%;
+            margin: 1.5rem auto 0;
+            display: flex;
+            flex-direction: column;
+            gap: 1rem;
+            animation: fadeInZoom 1.5s ease-in;
+        }
+
+        @media (min-width: 768px) {
+            #contact-form { max-width: 600px; gap: 1.5rem; }
+        }
+
+        #contact-form input, #contact-form textarea {
+            padding: 0.8rem;
+            border: 2px solid #555;
+            border-radius: 8px;
+            background: #3a4d5f;
+            color: #e0e0e0;
+            transition: border-color 0.4s ease, box-shadow 0.4s ease, transform 0.4s ease;
+            font-size: 1rem;
+            width: 100%;
+        }
+
+        body.light #contact-form input, body.light #contact-form textarea {
+            background: #ffffff;
+            border-color: #ddd;
+            color: #333;
+        }
+
+        #contact-form input:focus, #contact-form textarea:focus {
+            border-color: #4a90e2;
+            box-shadow: 0 0 10px rgba(74, 144, 226, 0.4);
+            transform: scale(1.02);
+            outline: none;
+        }
+
+        body.light #contact-form input:focus, body.light #contact-form textarea:focus {
+            border-color: #2a3b4d;
+            box-shadow: 0 0 10px rgba(42, 59, 77, 0.3);
+        }
+
+        #contact-form textarea {
+            height: 120px;
+        }
+
+        @media (min-width: 768px) {
+            #contact-form textarea { height: 180px; }
+        }
+
+        /* Footer */
+        footer {
+            padding: 1rem;
+            background: #2a3b4d;
+            color: #ffffff;
+            text-align: center;
+            animation: fadeIn 2s ease-in;
+            border-top: 2px solid #3a4d5f;
+            box-shadow: 0 -2px 10px rgba(0, 0, 0, 0.2);
+        }
+
+        body.light footer {
+            background: #ffffff;
+            color: #333;
+            border-top: 2px solid #ddd;
+            box-shadow: 0 -2px 10px rgba(0, 0, 0, 0.1);
+        }
+
+        @media (min-width: 768px) {
+            footer { padding: 1.5rem; }
+        }
+    </style>
+</head>
+<body>
+    <!-- Theme Toggle Button (Icons) -->
+    <button class="theme-toggle" onclick="toggleTheme()">
+        <i class="fas fa-sun"></i>
+        <i class="fas fa-moon"></i>
+    </button>
+
+    <!-- Navigation -->
+    <nav class="navbar">
+        <div class="logo">Fahim Akhtar</div>
+        <ul class="nav-links">
+            <li><a href="#home">Home</a></li>
+            <li><a href="#about">About</a></li>
+            <li><a href="#experience">Experience</a></li>
+            <li><a href="#skills">Skills</a></li>
+            <li><a href="#education">Education</a></li>
+            <li><a href="#certifications">Certifications</a></li>
+            <li><a href="#projects">Projects</a></li>
+            <li><a href="#recommendations">Recommendations</a></li>
+            <li><a href="#contact">Contact</a></li>
+        </ul>
+        <div class="hamburger">☰</div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section id="home" class="hero">
+        <div class="hero-content">
+            <h1>Fahim Akhtar <i class="fas fa-user-tie"></i></h1>
+            <p>Senior Full Stack .NET Developer | Azure & CI/CD Specialist</p>
+            <div class="position">Software Engineer | Karachi, Pakistan</div>
+            <a href="#contact" class="btn">Get in Touch <i class="fas fa-arrow-right"></i></a>
+        </div>
+        <!-- Placeholder for your photo (replace 'your-photo.jpg' with the actual file path or URL) -->
+        <img src="fahim.jpg" alt="Fahim Akhtar">
+    </section>
+
+    <!-- About Section -->
+    <section id="about" class="section">
+        <h2>About Me</h2>
+        <p>I’m a passionate Software Engineer with over 5 years of experience in designing, developing, and deploying robust web applications. I specialize in .NET Core, ASP.NET MVC, C#, and modern JavaScript frameworks, with a strong focus on Azure cloud services and CI/CD pipelines. I thrive on solving complex challenges and delivering scalable, high-quality solutions.</p>
+    </section>
+
+    <!-- Experience Section -->
+    <section id="experience" class="section">
+        <h2>Professional Experience</h2>
+        <div class="experience-grid">
+            <div class="experience-card">
+                <h3>Senior Software Engineer - Enterprise64</h3>
+                <p>January 2023 - Present | Karachi, Pakistan</p>
+                <p>Mentor junior developers, collaborate with cross-functional teams, and deliver high-quality software solutions using .NET Core and Azure.</p>
+            </div>
+            <div class="experience-card">
+                <h3>Senior Software Engineer - Unity Foods Limited</h3>
+                <p>November 2021 - January 2023 | Karachi, Pakistan</p>
+                <p>Led development of web applications with C#, .NET Core, ASP.NET MVC, and RESTful APIs.</p>
+            </div>
+            <div class="experience-card">
+                <h3>Software Engineer - Xtecsoft</h3>
+                <p>February 2021 - November 2021 | Karachi, Pakistan</p>
+                <p>Developed web apps with .NET Core, Web API, and React.js for optimal user experience.</p>
+            </div>
+            <div class="experience-card">
+                <h3>ASP.NET MVC Web Developer - Slash Global International</h3>
+                <p>November 2018 - January 2021 | Karachi, Pakistan</p>
+                <p>Full stack development with C#, ASP.NET MVC, and RESTful APIs, focusing on scalable solutions.</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Skills Section -->
+    <section id="skills" class="section">
+        <h2>Top Skills</h2>
+        <div class="skills-grid">
+            <div class="skill-card">Node.js</div>
+            <div class="skill-card">ASP.NET Core</div>
+            <div class="skill-card">C#</div>
+            <div class="skill-card">JavaScript</div>
+            <div class="skill-card">Azure Cloud</div>
+            <div class="skill-card">CI/CD</div>
+            <div class="skill-card">React.js</div>
+            <div class="skill-card">RESTful APIs</div>
+            <div class="skill-card">HTML5</div>
+            <div class="skill-card">CSS</div>
+            <div class="skill-card">Research Skills</div>
+        </div>
+    </section>
+
+    <!-- Education Section -->
+    <section id="education" class="section">
+        <h2>Education</h2>
+        <div class="education-grid">
+            <div class="education-card">
+                <h3>Virtual University</h3>
+                <p>BSC (Computer Science) | October 2018 - April 2024</p>
+            </div>
+            <div class="education-card">
+                <h3>Aptech Site Center</h3>
+                <p>3-Year Diploma (ACCP Pro), Computer Software Engineering | November 2016 - November 2019</p>
+            </div>
+            <div class="education-card">
+                <h3>Nice College</h3>
+                <p>Intermediate FSc | January 2014 - February 2016</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Certifications Section -->
+    <section id="certifications" class="section">
+        <h2>Certifications</h2>
+        <div class="certifications-grid">
+            <div class="certification-card">
+                <h3>Microsoft Certified: Azure Fundamentals</h3>
+            </div>
+        </div>
+    </section>
+
+    <!-- Projects Section -->
+    <section id="projects" class="section">
+        <h2>Key Projects</h2>
+        <div class="projects-grid">
+            <div class="project-card">
+                <h3>Web Application for Enterprise64</h3>
+                <p>Developed a scalable web app using .NET Core, Azure, and React.js, improving performance by 30%.</p>
+                <a href="#" target="_blank" style="color: #4a90e2;">View Project <i class="fas fa-arrow-right"></i></a>
+            </div>
+            <div class="project-card">
+                <h3>E-commerce Platform for Unity Foods</h3>
+                <p>Built a full-stack e-commerce solution with ASP.NET MVC, C#, and RESTful APIs, enhancing user experience.</p>
+                <a href="#" target="_blank" style="color: #4a90e2;">View Project <i class="fas fa-arrow-right"></i></a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Recommendations Section -->
+    <section id="recommendations" class="section">
+        <h2>Recommendations</h2>
+        <div class="recommendations-grid">
+            <div class="recommendation-card">
+                <p>"Fahim is an exceptional developer with deep expertise in .NET and Azure. His leadership and technical skills have greatly benefited our team." - John Doe, CTO at Enterprise64</p>
+            </div>
+            <div class="recommendation-card">
+                <p>"His ability to deliver high-quality solutions on time is remarkable. Fahim’s work on our web applications has been outstanding." - Jane Smith, Project Manager at Unity Foods</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Contact Section -->
+    <section id="contact" class="section">
+        <h2>Contact Me</h2>
+        <p>Email: <a href="mailto:fahim1805@gmail.com" style="color: #4a90e2;">fahim1805@gmail.com</a></p>
+        <p>Phone: +92 341 3101509</p>
+        <p>Location: Karachi, Sindh, Pakistan</p>
+        <p><a href="https://www.linkedin.com/in/fahim-akhtar-software-engineer" target="_blank" style="color: #4a90e2;">LinkedIn Profile <i class="fas fa-linkedin"></i></a></p>
+        <form id="contact-form">
+            <input type="text" placeholder="Name" required>
+            <input type="email" placeholder="Email" required>
+            <textarea placeholder="Message" required></textarea>
+            <button type="submit" class="btn">Send Message <i class="fas fa-paper-plane"></i></button>
+        </form>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <p>© 2025 Fahim Akhtar. All rights reserved. <i class="fas fa-copyright"></i></p>
+    </footer>
+
+    <script>
+        // Theme Toggle Function
+        function toggleTheme() {
+            const body = document.body;
+            body.classList.toggle('light');
+        }
+
+        // Hamburger Menu Toggle (Left Sidebar)
+        const hamburger = document.querySelector('.hamburger');
+        const navLinks = document.querySelector('.nav-links');
+
+        hamburger.addEventListener('click', () => {
+            navLinks.classList.toggle('active');
+            hamburger.classList.toggle('rotate');
+        });
+
+        // Smooth Scroll
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                document.querySelector(this.getAttribute('href')).scrollIntoView({
+                    behavior: 'smooth'
+                });
+                // Close sidebar on mobile after clicking a link
+                if (window.innerWidth <= 768) {
+                    navLinks.classList.remove('active');
+                    hamburger.classList.remove('rotate');
+                }
+            });
+        });
+
+        // Form Submission (Basic Example)
+        document.getElementById('contact-form').addEventListener('submit', function (e) {
+            e.preventDefault();
+            alert('Form submitted! (This is a demo)');
+            this.reset();
+        });
+
+        // Particle Animation for Background
+        function createParticles() {
+            const particleCount = 50;
+            const particles = [];
+            for (let i = 0; i < particleCount; i++) {
+                const particle = document.createElement('div');
+                particle.classList.add('particle');
+                particle.style.left = Math.random() * 100 + 'vw';
+                particle.style.top = Math.random() * 100 + 'vh';
+                particle.style.animationDelay = Math.random() * 5 + 's';
+                document.body.appendChild(particle);
+                particles.push(particle);
+            }
+
+            particles.forEach(particle => {
+                particle.addEventListener('animationend', () => {
+                    particle.style.left = Math.random() * 100 + 'vw';
+                    particle.style.top = Math.random() * 100 + 'vh';
+                    particle.style.animationDelay = Math.random() * 5 + 's';
+                });
+            });
+        }
+
+        createParticles();
+
+        // Add CSS for particles
+        const style = document.createElement('style');
+        style.textContent = `
+            .particle {
+                position: fixed;
+                width: 5px;
+                height: 5px;
+                background: #4a90e2;
+                border-radius: 50%;
+                animation: floatUp 5s infinite ease-in-out;
+            }
+
+            body.light .particle { background: #2a3b4d; }
+
+            @keyframes floatUp {
+                0% { opacity: 0; transform: translateY(0) scale(0); }
+                25% { opacity: 0.5; transform: translateY(-50px) scale(1); }
+                50% { opacity: 1; transform: translateY(-100px) scale(0.8); }
+                75% { opacity: 0.5; transform: translateY(-150px) scale(1); }
+                100% { opacity: 0; transform: translateY(-200px) scale(0); }
+            }
+        `;
+        document.head.appendChild(style);
+    </script>
+</body>
+</html>
