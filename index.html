@@ -32,6 +32,7 @@
 
         /* Theme Toggle Button (Icons) */
         .theme-toggle {
+            margin-right: 30px;
             position: fixed;
             top: 20px;
             right: 20px;
@@ -77,9 +78,9 @@
         /* Navbar and Sidebar */
         .navbar {
             display: flex;
-            justify-content: flex-end;
+            justify-content: space-between;
             align-items: center;
-            padding: 1rem 1rem;
+            padding: 1rem 2rem;
             background: #2a3b4d;
             color: #ffffff;
             position: fixed;
@@ -96,14 +97,9 @@
         }
 
         .logo {
-            font-size: 1.2rem;
+            font-size: 1.5rem;
             font-weight: 600;
             animation: pulse 2s infinite ease-in-out;
-        }
-
-        @media (min-width: 768px) {
-            .logo { font-size: 1.5rem; }
-            .navbar { padding: 1rem 2rem; justify-content: space-between; }
         }
 
         @keyframes pulse {
@@ -115,8 +111,8 @@
         .nav-links {
             list-style: none;
             display: flex;
-            gap: 1rem;
-            margin-right: 40px;
+            gap: 1.5rem;
+            margin-right: 80px;
         }
 
         body.light .nav-links a {
@@ -141,7 +137,6 @@
             cursor: pointer;
             transition: transform 0.3s ease, color 0.3s ease;
             color: #ffffff;
-            padding: 0.5rem;
         }
 
         body.light .hamburger {
@@ -154,20 +149,20 @@
         }
 
         @media (max-width: 768px) {
-            .hamburger {
-                display: block;
+            .navbar {
+                padding: 1rem;
             }
 
             .nav-links {
                 display: none;
                 flex-direction: column;
                 position: fixed;
-                top: 0;
-                left: -250px;
-                width: 250px;
-                height: 100vh;
+                top: 60px;
+                left: 0;
+                width: 100%;
+                height: calc(100vh - 60px);
                 background: #2a3b4d;
-                padding: 4rem 1rem 1rem;
+                padding: 2rem;
                 box-shadow: 2px 0 15px rgba(0, 0, 0, 0.3);
                 transition: left 0.3s ease;
             }
@@ -178,16 +173,11 @@
             }
 
             .nav-links.active {
-                left: 0;
+                display: flex;
             }
 
-            .nav-links li {
-                margin-bottom: 1rem;
-            }
-
-            .nav-links a {
-                font-size: 1.1rem;
-                padding: 0.5rem;
+            .hamburger {
+                display: block;
             }
         }
 
@@ -238,7 +228,7 @@
         }
 
         .hero h1 {
-            font-size: 2rem;
+            font-size: 2.5rem;
             margin-bottom: 1rem;
             text-shadow: 2px 2px 8px rgba(0, 0, 0, 0.6);
             font-weight: 700;
@@ -486,6 +476,11 @@
         .skill-card:nth-child(9) { background: #e74c3c; }
         .skill-card:nth-child(10) { background: #8e44ad; }
         .skill-card:nth-child(11) { background: #d35400; }
+        .skill-card:nth-child(12) { background: #3498db; }
+        .skill-card:nth-child(13) { background: #2ecc71; }
+        .skill-card:nth-child(14) { background: #e74c3c; }
+        .skill-card:nth-child(15) { background: #8e44ad; }
+        .skill-card:nth-child(16) { background: #d35400; }
 
         .skill-card:hover {
             transform: scale(1.1) rotate(-2deg);
@@ -571,6 +566,28 @@
             box-shadow: 0 -2px 10px rgba(0, 0, 0, 0.1);
         }
 
+        .social-icons {
+            display: flex;
+            justify-content: center;
+            gap: 1.5rem;
+            margin-top: 1rem;
+        }
+
+        .social-icons a {
+            color: #4a90e2;
+            font-size: 1.5rem;
+            transition: color 0.3s ease, transform 0.3s ease;
+        }
+
+        body.light .social-icons a {
+            color: #2a3b4d;
+        }
+
+        .social-icons a:hover {
+            color: #e74c3c;
+            transform: translateY(-5px);
+        }
+
         @media (min-width: 768px) {
             footer { padding: 1.5rem; }
         }
@@ -605,10 +622,10 @@
         <div class="hero-content">
             <h1>Fahim Akhtar <i class="fas fa-user-tie"></i></h1>
             <p>Senior Full Stack .NET Developer | Azure & CI/CD Specialist</p>
-            <div class="position">Software Engineer | Karachi, Pakistan</div>
+            <div class="position">Sr. Software Engineer | Karachi, Pakistan</div>
             <a href="#contact" class="btn">Get in Touch <i class="fas fa-arrow-right"></i></a>
         </div>
-        <!-- Placeholder for your photo (replace 'your-photo.jpg' with the actual file path or URL) -->
+        <!-- Placeholder for your photo (replace 'fahim.jpg' with the actual file path or URL) -->
         <img src="fahim.jpg" alt="Fahim Akhtar">
     </section>
 
@@ -649,20 +666,24 @@
     <section id="skills" class="section">
         <h2>Top Skills</h2>
         <div class="skills-grid">
-            <div class="skill-card">Node.js</div>
-            <div class="skill-card">ASP.NET Core</div>
+            <div class="skill-card">.NET Core</div>
+            <div class="skill-card">ASP.NET Frameworks</div>
             <div class="skill-card">C#</div>
-            <div class="skill-card">JavaScript</div>
-            <div class="skill-card">Azure Cloud</div>
-            <div class="skill-card">CI/CD</div>
-            <div class="skill-card">React.js</div>
+            <div class="skill-card">MS SQL Server </div>
             <div class="skill-card">RESTful APIs</div>
-            <div class="skill-card">HTML5</div>
-            <div class="skill-card">CSS</div>
-            <div class="skill-card">Research Skills</div>
+            <div class="skill-card">Azure .NET Integration</div>
+            <div class="skill-card">Visual Basic .NET (VB.NET)   </div>
+            <div class="skill-card">Jenkins/Azure CI/CD</div>
+            <div class="skill-card">Version Control Git & Github</div>
+            <div class="skill-card">TypeScript</div>
+            <div class="skill-card">React.js</div>
+            <div class="skill-card">Angular.js</div>
+            <div class="skill-card">Web Designing</div>
+            <div class="skill-card">JavaScript,JQuery</div>
+            <div class="skill-card">HTML5,CSS</div>
         </div>
     </section>
-
+    
     <!-- Education Section -->
     <section id="education" class="section">
         <h2>Education</h2>
@@ -740,6 +761,17 @@
     <!-- Footer -->
     <footer>
         <p>© 2025 Fahim Akhtar. All rights reserved. <i class="fas fa-copyright"></i></p>
+        <div class="social-icons">
+            <a href="https://www.linkedin.com/in/fahim-akhtar-software-engineer" target="_blank" aria-label="LinkedIn">
+                <i class="fab fa-linkedin"></i>
+            </a>
+            <a href="https://www.facebook.com/your-profile" target="_blank" aria-label="Facebook">
+                <i class="fab fa-facebook"></i>
+            </a>
+            <a href="https://www.instagram.com/your-profile" target="_blank" aria-label="Instagram">
+                <i class="fab fa-instagram"></i>
+            </a>
+        </div>
     </footer>
 
     <script>
